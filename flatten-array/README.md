@@ -1,15 +1,14 @@
-# Word Count
+# Flatten Array
 
-Given a phrase, count the occurrences of each word in that phrase.
+Take a nested list and return a single flattened list with all values except nil/null.
 
-For example for the input `"olly olly in come free"`
+The challenge is to write a function that accepts an arbitrarily-deep nested list-like structure and returns a flattened structure without any nil/null values.
 
-```text
-olly: 2
-in: 1
-come: 1
-free: 1
-```
+For Example
+
+input: [1,[2,3,null,4],[null],5]
+
+output: [1,2,3,4,5]
 
 * * * *
 
@@ -27,16 +26,16 @@ the test file.
 
 Run the tests from the exercise directory using the following command:
 
-    ruby word_count_test.rb
+    ruby flatten_array_test.rb
 
 To include color from the command line:
 
-    ruby -r minitest/pride word_count_test.rb
+    ruby -r minitest/pride flatten_array_test.rb
 
 
 ## Source
 
-This is a classic toy problem, but we were reminded of it by seeing it in the Go Tour.
+Interview Question [https://reference.wolfram.com/language/ref/Flatten.html](https://reference.wolfram.com/language/ref/Flatten.html)
 
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.

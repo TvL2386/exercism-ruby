@@ -5,23 +5,21 @@ end
 class Phrase
   def initialize(line)
     @line = line
-
-    parse
   end
 
   def word_count
-    @word_count ||= Hash.new { |h,k| h[k] = 0 }
+    @word_count ||= parse
   end
 
   private
 
   def parse
-    tokens.each do |token|
-      word_count[token.downcase] += 1
+    tokens.each_with_object({}) do |token, hash|
+      hash[token] = hash.fetch(token) {0} + 1
     end
   end
 
   def tokens
-    @line.scan(/\b([\w']+)\b/).flatten
+    @line.downcase.scan(/\b([\w']+)\b/).flatten
   end
 end
