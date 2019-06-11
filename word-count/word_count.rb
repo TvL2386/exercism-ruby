@@ -14,12 +14,12 @@ class Phrase
   private
 
   def parse
-    tokens.each_with_object({}) do |token, hash|
-      hash[token] = hash.fetch(token) {0} + 1
+    tokens.each_with_object(Hash.new(0)) do |token, count|
+      count[token] += 1
     end
   end
 
   def tokens
-    @line.downcase.scan(/\b([\w']+)\b/).flatten
+    @line.downcase.scan(/\b[\w']+\b/)
   end
 end
