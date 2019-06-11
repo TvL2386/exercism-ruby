@@ -4,35 +4,20 @@ end
 
 class Raindrops
   def self.convert(input)
-    array1 = []
-    array2 = []
+    sound = ''
 
-    current = input
-
-    (1...input).each do |i|
-      break if current < i
-
-      if input % i == 0
-        current = input / i
-
-        array1 << i
-        array2 << current
-      end
+    if input%3 == 0
+      sound += 'Pling'
     end
 
-    response = (array1 + array2.reverse).uniq.map do |number|
-      case number
-        when 3
-          'Pling'
-        when 5
-          'Plang'
-        when 7
-          'Plong'
-        else
-          nil
-      end
-    end.join
+    if input%5 == 0
+      sound += 'Plang'
+    end
 
-    response.empty? ? input.to_s : response
+    if input%7 == 0
+      sound += 'Plong'
+    end
+
+    (sound.length > 0) && sound || input.to_s
   end
 end
