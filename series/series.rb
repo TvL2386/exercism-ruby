@@ -14,14 +14,6 @@ class Series
   def slices count
     raise ArgumentError, 'index out of bounds' if count > @chars.count
 
-    [].tap do |arr|
-      @chars.each_index do |x|
-        str = @chars[x, count]
-
-        break if str.size != count
-
-        arr << str.join
-      end
-    end
+    @chars.each_cons(count).map(&:join)
   end
 end
