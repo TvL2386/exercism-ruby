@@ -6,18 +6,14 @@ To get started with TDD, see the `README.md` file in your
 `ruby/isogram` directory.
 =end
 
+require 'set'
+
 class Isogram
   ISOGRAM_CHARS = ('a'..'z').each_with_object({}) { |char, hash| hash[char] = true }
 
   def self.isogram? input
-    chars_seen = {}
-
-    input.downcase.each_char do |char|
-      if ISOGRAM_CHARS[char]
-        return false if chars_seen[char]
-
-        chars_seen[char] = true
-      end
+    input.downcase.each_char.each_with_object(Set.new) do |char, set|
+      return false if ISOGRAM_CHARS[char] && set.add?(char).nil?
     end
 
     true
